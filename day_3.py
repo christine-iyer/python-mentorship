@@ -16,3 +16,4 @@ def display_inventory(inventory):
 # search for products
 # remove prosuctrs
 
+print('hi')
