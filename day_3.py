@@ -35,8 +35,22 @@ print("Here's the Updated Onventory", inventory)
 def display_inventory(inventory):
      for product in inventory:
           print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
-#           display_inventory()
-# # update products
+          display_inventory()
+# # update product
+def update_quantity(product_name, new_quantity):
+    for product in inventory:
+        if product["name"].lower() == product_name.lower():
+            product["quantity"] = new_quantity
+            print(f"{product_name} quantity updated to {new_quantity}.")
+            return
+    print(f"{product_name} not found in inventory.")
+    
+# Test the function
+update_quantity("monitor", 7)
+update_quantity("keyboard", 7)
+add_product("printer", 37, 97)
+print("Updated Inventory:", inventory)     
+
 # # search for products
 # # remove prosuctrs
 
