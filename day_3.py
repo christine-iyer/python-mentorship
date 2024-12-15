@@ -52,6 +52,27 @@ add_product("printer", 37, 97)
 print("Updated Inventory:", inventory)     
 
 # # search for products
+def search_product(product_name):
+     for product in inventory:
+          if product['name'].lower()==product_name.lower():
+               print(f"{product_name} found")
+               return
+     print(f"{product_name} not dound")
+     
+update_quantity("keyboard", 13) 
+search_product("monitor")    
+          
 # # remove prosuctrs
+
+def remove_product(product_name):
+     for product in inventory:
+          if product['name'].lower()== product_name.lower():
+               inventory.remove(product)
+               print(f"{product_name} removed")
+               return   
+     print(f"{product_name} not found in the inventory")   
+remove_product("monitor")
+print("Updated Inventory:", inventory) 
+                  
 
 # print('hi')
