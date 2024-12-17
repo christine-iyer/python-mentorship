@@ -75,4 +75,4 @@ remove_product("monitor")
 print("Updated Inventory:", inventory) 
                   
 
-# print('hi')
+# integrated functionality
