@@ -24,8 +24,6 @@ def add_product(name, quantity, price):
     inventory.append(new_item)
     print(f"Product '{name}' added successfully.")
     
-
-
 # Example usage
 add_product("Apple", 10, 0.5)
 add_product("Banana", 20, 0.3)
@@ -40,15 +38,9 @@ def display_inventory():
     for product in inventory:
         print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
 
-# display_inventory()
-
-
-
-#test
 add_product("Monitor", 2, 150)
 add_product("Camera", 1, 350)
 
-print("Updated Inventory:", inventory)
           
      
      
