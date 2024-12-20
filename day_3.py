@@ -1,88 +1,25 @@
-# Create an inventory management system.
-
-#create inventory distionary
-inventory=[]
-#define add_product function. The product has 3 properties: name, quantity, price
-def add_product(name, quantity, price):
-     pass
-#define show_inventory function.
-def display_inventory():
-     pass
-#define details of add_product function
 # Define the inventory list
 inventory = []
 
+# Add a product to the inventory
 def add_product(name, quantity, price):
-    # Check if the product already exists in the inventory
     for item in inventory:
-        if item["name"] == name:
+        if item["name"].lower() == name.lower():
             print(f"Product '{name}' already exists in the inventory.")
-            return  # Exit the function without adding the duplicate product
-
-    # Add the new product if it doesn't exist
-    new_item = {"name": name, "quantity": quantity, "price": price}
-    inventory.append(new_item)
+            return
+    inventory.append({"name": name, "quantity": quantity, "price": price})
     print(f"Product '{name}' added successfully.")
-    
-# Example usage
-add_product("Apple", 10, 0.5)
-add_product("Banana", 20, 0.3)
-add_product("Apple", 5, 0.4)  # This will not be added
-     
-#define details of display_inventory
+
+# Display the inventory
 def display_inventory():
-     for product in inventory:
-        print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: {product['price']}")
+    if not inventory:
+        print("Inventory is empty.")
+    else:
+        print("\nCurrent Inventory:")
+        for product in inventory:
+            print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
 
-def display_inventory():
-    for product in inventory:
-        print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
-
-add_product("Monitor", 2, 150)
-add_product("Camera", 1, 350)
-
-          
-     
-     
-#function warm up
-def add_numbers(x,y):
-     sum = x+y
-     print(sum)
-     return sum
-my_sum = add_numbers
-my_sum(7,8) 
-
-#same function with an unlimited number of args
-def add_numbers(*args):
-     total=sum(args)
-     print(total)
-     return total
-
-my_sum = add_numbers
-my_sum(5,4,3,7, 55)   
-
-# looping and scoping
-colors=["red","blue","green", "yellow", "orange"]
-for color in colors:
-     print(f"The color is {color}")
-print("outside", color) 
- 
-     
-     
-inventory=[]
-def add_product(name, quantity, price):
-     product={"name":name, "quantity":quantity, "price":price}
-     inventory.append(product)
-     
-add_product("Monitor", 2, 375)
-add_product("Keyboard", 6, 80)   
-print("Here's the Updated Onventory", inventory)  
-# display inventory
-def display_inventory(inventory):
-     for product in inventory:
-          print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
-          display_inventory()
-# # update product
+# Update the quantity of a product
 def update_quantity(product_name, new_quantity):
     for product in inventory:
         if product["name"].lower() == product_name.lower():
@@ -90,57 +27,39 @@ def update_quantity(product_name, new_quantity):
             print(f"{product_name} quantity updated to {new_quantity}.")
             return
     print(f"{product_name} not found in inventory.")
-    
-# Test the function
-update_quantity("monitor", 7)
-update_quantity("keyboard", 7)
-add_product("printer", 37, 97)
-print("Updated Inventory:", inventory)     
 
-# # search for products
+# Search for a product
 def search_product(product_name):
-     for product in inventory:
-          if product['name'].lower()==product_name.lower():
-               print(f"{product_name} found")
-               return
-     print(f"{product_name} not dound")
-     
-update_quantity("keyboard", 13) 
-search_product("monitor")    
-          
-# # remove prosuctrs
+    for product in inventory:
+        if product["name"].lower() == product_name.lower():
+            print(f"Product found: {product}")
+            return
+    print(f"{product_name} not found in inventory.")
 
+# Remove a product from the inventory
 def remove_product(product_name):
-     for product in inventory:
-          if product['name'].lower()== product_name.lower():
-               inventory.remove(product)
-               print(f"{product_name} removed")
-               return   
-     print(f"{product_name} not found in the inventory")   
-remove_product("monitor")
-print("Updated Inventory:", inventory) 
-                  
+    for product in inventory:
+        if product["name"].lower() == product_name.lower():
+            inventory.remove(product)
+            print(f"Product '{product_name}' removed from inventory.")
+            return
+    print(f"{product_name} not found in inventory.")
 
-def get_integer_input(prompt):
-    while True:
-        try:
-            return int(input(prompt))
-        except ValueError:
-            print(f"{prompt}: Invalid input. Sorry error.")  # Using f-string for variable substitution.
-
-
+# Sort the inventory by name or price
 def sort_inventory(by="name"):
     if by == "name":
-        sorted_inventory = sorted(inventory, key=lambda x: x["name"])
+        sorted_inventory = sorted(inventory, key=lambda x: x["name"].lower())
     elif by == "price":
         sorted_inventory = sorted(inventory, key=lambda x: x["price"])
     else:
         print("Invalid sort criteria. Sorting by name by default.")
-        sorted_inventory = sorted(inventory, key=lambda x: x["name"])
+        sorted_inventory = sorted(inventory, key=lambda x: x["name"].lower())
 
+    print("\nSorted Inventory:")
     for product in sorted_inventory:
         print(f"Name: {product['name']}, Quantity: {product['quantity']}, Price: ${product['price']}")
 
+# Main menu
 def main():
     while True:
         print("\nMenu:")
@@ -149,7 +68,8 @@ def main():
         print("3. Search Product")
         print("4. Remove Product")
         print("5. Display Inventory")
-        print("6. Exit")
+        print("6. Sort Inventory")
+        print("7. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -171,8 +91,13 @@ def main():
         elif choice == "5":
             display_inventory()
         elif choice == "6":
+            by = input("Sort by 'name' or 'price': ").lower()
+            sort_inventory(by)
+        elif choice == "7":
             print("Exiting program.")
             break
         else:
             print("Invalid choice. Please try again.")
+
+# Run the program
 main()
