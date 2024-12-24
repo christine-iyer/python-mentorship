@@ -23,6 +23,11 @@ def add_product(name, quantity, price):
     new_item = {"name": name, "quantity": quantity, "price": price}
     inventory.append(new_item)
     print(f"Product '{name}' added successfully.")
+
+fruit_list = []
+def add_fruit(name, cost, quantity):
+    new_fruit = ("name": name, "quantity":quantity, "cost":cost)
+    fruit_list.append(new_fruit)
     
 # Example usage
 add_product("Apple", 10, 0.5)
