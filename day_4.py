@@ -66,6 +66,36 @@ print("Final balance:", account.get_balance())
 print("Total overdraft fees:", account.get_overdraft_fees())
 
           
+class Pizza:
+     def __init__(self, size, crust, toppings=[]) :
+          self.size = size
+          self.crust = crust
+          self.toppings = toppings
           
+     def add_topping(self, topping):
+          self.toppings.append(topping)
+          
+     def remove_topping(self,topping):
+          if topping in self.toppings:
+               self.toppings.remove(topping)
+               
+          
+     def get_price(self) :
+          base_price = {"small": 8,"medium": 10, "large": 12}
+          topping_price = 1.5 * len(self.toppings)
+          return base_price[self.size] + topping_price
+     
+     def __str__(self):
+          return(f"{self.size.capitalize()} {self.crust} pizza with {', '.join(self.toppings) or 'no toppings'}")
+     
+pizza1 = Pizza("small","thin", ["roni", "cherry peppers", "pineapple", "peppers"])
+pizza1.add_topping('onions')
+print(pizza1)
+pizza1.remove_topping("peppers")
+print(pizza1)
+     
+          
+          
+             
            
                 
