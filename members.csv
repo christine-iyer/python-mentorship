@@ -1,0 +1,5 @@
+type,full_name,reason_or_bio,skills
+Student,Jane Doe,"I am trying to learn programming and need some help",
+Student,Lena Smith,"I am really excited about learning to program!",
+Instructor,Vicky Python,"I want to help people learn coding.","HTML,JavaScript"
+Instructor,Nicole McMillan,"I have been programming for 5 years in Python and want to spread the love","Python"
