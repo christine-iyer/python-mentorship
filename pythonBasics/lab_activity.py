@@ -35,9 +35,6 @@ class Workshop:
           self.subject = subject
           self.instructors = []
           self.students = [] 
-                            
-                            
-import csv
 
 members = []
 workshops = []
